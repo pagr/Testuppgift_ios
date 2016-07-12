@@ -80,7 +80,7 @@
         <!--Phone Book-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Testuppgift_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="PhoneBookViewController" customModule="Testuppgift_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -89,19 +89,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FEG-Yb-utc">
-                                <rect key="frame" x="41" y="28" width="97" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWu-3F-vFQ">
+                                <rect key="frame" x="236" y="210" width="128" height="30"/>
+                                <state key="normal" title="Show Adress Book"/>
+                                <connections>
+                                    <action selector="openPhoneBookButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="CvB-9G-mm7"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FEG-Yb-utc">
+                                <rect key="frame" x="20" y="285" width="561" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-OZ-UKT">
-                                <rect key="frame" x="187" y="28" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FEG-Yb-utc" firstAttribute="top" secondItem="MWu-3F-vFQ" secondAttribute="bottom" constant="45" id="1Ux-9c-QQh"/>
+                            <constraint firstItem="FEG-Yb-utc" firstAttribute="centerX" secondItem="MWu-3F-vFQ" secondAttribute="centerX" id="HmD-vg-dQC"/>
+                            <constraint firstItem="FEG-Yb-utc" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="gDv-qv-zuC"/>
+                            <constraint firstItem="MWu-3F-vFQ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="lP9-9p-FeO"/>
+                            <constraint firstItem="FEG-Yb-utc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="uTj-rn-U43"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Phone Book" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="phoneNumberTextField" destination="FEG-Yb-utc" id="UCj-gJ-Khg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +123,7 @@
         <!--Caller-->
         <scene sceneID="Cl3-gS-VGR">
             <objects>
-                <viewController id="gao-Kb-ShS" sceneMemberID="viewController">
+                <viewController id="gao-Kb-ShS" customClass="CallerViewController" customModule="Testuppgift_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1vk-56-sfI"/>
                         <viewControllerLayoutGuide type="bottom" id="kuw-jf-wcg"/>
@@ -119,19 +132,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiX-Ku-RkS">
-                                <rect key="frame" x="255" y="91" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiX-Ku-RkS">
+                                <rect key="frame" x="277" y="210" width="46" height="30"/>
+                                <state key="normal" title="Call"/>
+                                <connections>
+                                    <action selector="callButtonPressed:" destination="gao-Kb-ShS" eventType="touchUpInside" id="Pxx-dK-KuF"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lOV-OS-4if">
-                                <rect key="frame" x="20" y="91" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lOV-OS-4if">
+                                <rect key="frame" x="20" y="285" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2Q-Bp-hZ4">
+                                <rect key="frame" x="279" y="248" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lOV-OS-4if" firstAttribute="top" secondItem="uiX-Ku-RkS" secondAttribute="bottom" constant="45" id="0QR-Pg-cBy"/>
+                            <constraint firstItem="z2Q-Bp-hZ4" firstAttribute="centerX" secondItem="uag-K5-Y98" secondAttribute="centerX" id="9yB-WQ-O7F"/>
+                            <constraint firstItem="z2Q-Bp-hZ4" firstAttribute="top" secondItem="uiX-Ku-RkS" secondAttribute="bottom" constant="8" id="A7S-zs-YQU"/>
+                            <constraint firstItem="lOV-OS-4if" firstAttribute="centerX" secondItem="uag-K5-Y98" secondAttribute="centerX" id="ES4-jq-B74"/>
+                            <constraint firstItem="lOV-OS-4if" firstAttribute="leading" secondItem="uag-K5-Y98" secondAttribute="leadingMargin" id="IKf-hA-aG1"/>
+                            <constraint firstItem="uiX-Ku-RkS" firstAttribute="centerX" secondItem="uag-K5-Y98" secondAttribute="centerX" id="Pv2-wq-JAX"/>
+                            <constraint firstItem="lOV-OS-4if" firstAttribute="centerY" secondItem="uag-K5-Y98" secondAttribute="centerY" id="eid-iy-wxX"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Caller" id="sGY-Zt-Lav"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="z2Q-Bp-hZ4" id="x2g-WT-hQD"/>
+                        <outlet property="phoneNumberTextField" destination="lOV-OS-4if" id="Cti-9H-Ghn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXP-vC-b6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
