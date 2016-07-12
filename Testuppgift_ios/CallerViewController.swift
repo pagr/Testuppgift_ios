@@ -16,6 +16,9 @@ class CallerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhoneBookViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,6 +31,11 @@ class CallerViewController: UIViewController {
             selectedPhoneNumber = nil
         }
     }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     
     @IBAction func callButtonPressed(sender: AnyObject) {
         if let number = self.phoneNumberTextField.text,

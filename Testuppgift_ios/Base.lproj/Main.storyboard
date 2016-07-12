@@ -65,7 +65,7 @@
                             <constraint firstItem="4Cg-uY-y7x" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="kAh-tF-Plu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Images" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Images" image="pic_fields" selectedImage="pic_fields" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="imageView1" destination="pgI-7C-XcX" id="VIN-WJ-Pw2"/>
                         <outlet property="imageView2" destination="ONb-jR-bo0" id="jLn-Ef-xeE"/>
@@ -77,7 +77,7 @@
             </objects>
             <point key="canvasLocation" x="-1218" y="-168"/>
         </scene>
-        <!--Phone Book-->
+        <!--Phone Book View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="PhoneBookViewController" customModule="Testuppgift_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                             <constraint firstItem="FEG-Yb-utc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="uTj-rn-U43"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Phone Book" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="phoneNumberTextField" destination="FEG-Yb-utc" id="UCj-gJ-Khg"/>
                     </connections>
@@ -120,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="-442" y="-168"/>
         </scene>
-        <!--Caller-->
+        <!--Phone-->
         <scene sceneID="Cl3-gS-VGR">
             <objects>
                 <viewController id="gao-Kb-ShS" customClass="CallerViewController" customModule="Testuppgift_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,10 +139,10 @@
                                     <action selector="callButtonPressed:" destination="gao-Kb-ShS" eventType="touchUpInside" id="Pxx-dK-KuF"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lOV-OS-4if">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lOV-OS-4if">
                                 <rect key="frame" x="20" y="285" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" keyboardType="phonePad" returnKeyType="done"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2Q-Bp-hZ4">
                                 <rect key="frame" x="279" y="248" width="42" height="21"/>
@@ -162,7 +162,7 @@
                             <constraint firstItem="lOV-OS-4if" firstAttribute="centerY" secondItem="uag-K5-Y98" secondAttribute="centerY" id="eid-iy-wxX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Caller" id="sGY-Zt-Lav"/>
+                    <tabBarItem key="tabBarItem" title="Phone" image="telephone" selectedImage="telephone" id="sGY-Zt-Lav"/>
                     <connections>
                         <outlet property="errorLabel" destination="z2Q-Bp-hZ4" id="x2g-WT-hQD"/>
                         <outlet property="phoneNumberTextField" destination="lOV-OS-4if" id="Cti-9H-Ghn"/>
@@ -194,7 +194,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="pic_fields" width="32" height="32"/>
+        <image name="telephone" width="32" height="32"/>
     </resources>
 </document>
