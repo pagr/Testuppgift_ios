@@ -25,10 +25,10 @@ class ImagesViewController: UIViewController {
     }
 
     @IBAction func loadImagesButtonPressed(sender: AnyObject) {
-        imageView1.loadImageFromUrl(NSURL(string: "http://img.dn.se/remote/d1.dn-static.se/UploadedImages/2016/7/12/aa8e1a21-9f08-437d-9299-2177635298d2/bigOriginal.jpg?preset=AlmaSectionTeaserUncroppedDesktop")!)
-        imageView2.loadImageFromUrl(NSURL(string: "http://images-6.svd-cdn.se/v2/images/6172164a-54c1-4692-ba3c-6186b3c43f2f?fit=crop&h=132&q=60&w=211&s=9f38cd998dce69d364a6987a430439bd521228dc")!)
-        imageView3.loadImageFromUrl(NSURL(string: "http://gfx.aftonbladet-cdn.se/image/23160925/485/imageColumnDouble/b0889c57c47f1/D7K_2770.JPG")!)
-        imageView4.loadImageFromUrl(NSURL(string: "http://z.cdn-expressen.se/images/8c/c7/8cc78772d3534924bb563d71813ab2dc/16x6/560.jpg")!)
+        imageView1.loadImageFromUrl(NSURL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Steve_Jobs_with_red_shawl_edit2.jpg/440px-Steve_Jobs_with_red_shawl_edit2.jpg")!)
+        imageView2.loadImageFromUrl(NSURL(string: "https://pbs.twimg.com/profile_images/378800000483764274/ebce94fb34c055f3dc238627a576d251.jpeg")!)
+        imageView3.loadImageFromUrl(NSURL(string: "http://assets.rollingstone.com/assets/images/story/20130718-bill-gates-624x420-1374261123.jpg")!)
+        imageView4.loadImageFromUrl(NSURL(string: "http://networthier.com/wp-content/uploads/2016/04/Satya-Nadella-net-worth.jpg")!)
         
     }
 

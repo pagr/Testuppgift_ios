@@ -30,7 +30,6 @@ class CallerViewController: UIViewController {
         }
     }
     
-    
     @IBAction func callButtonPressed(sender: AnyObject) {
         if let number = self.phoneNumberTextField.text,
             let encodedNumber = number.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.decimalDigitCharacterSet()),//Handle special characters
