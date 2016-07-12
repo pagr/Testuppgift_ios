@@ -14,6 +14,8 @@ enum Response<T> {
     case Success(T)
     case Error(ErrorType)
     
+    //Takes a Response<T> and returns Response<G>
+    //If the value is .Success then the function trasnform is applied, else the value is returned directly
     func map<G>(transform: T -> Response<G>) -> Response<G> {
         switch self {
         case .Success(let value):
@@ -89,8 +91,9 @@ extension NSURL {
 
 
 extension UIImageView {
+    //Loads an image asynchronously and sets it to the imageView with an animation.
+    //Does all UI work with spinners and displaying error messages
     func loadImageFromUrl(url: NSURL, callback:(Response<UIImage> -> Void)? = nil) {
-        
         hideEmptyMessage()
         startActivityIndicator(hasNavigationBar: false)
         url.getImage() { response in
