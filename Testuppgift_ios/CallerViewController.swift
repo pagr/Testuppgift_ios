@@ -33,29 +33,37 @@ class CallerViewController: UIViewController {
     
     @IBAction func callButtonPressed(sender: AnyObject) {
         if let number = self.phoneNumberTextField.text,
-            let url = NSURL(string: "tel:"+number) where
+            let encodedNumber = number.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.decimalDigitCharacterSet()),//Handle special characters
+            let url = NSURL(string: "tel:"+encodedNumber) where
             UIApplication.sharedApplication().canOpenURL(url){
             
-            //Configure alert controller
-            let alertController = UIAlertController(title: "Make call", message: "To "+number, preferredStyle: .Alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-                self.errorLabel.hidden = true
+            if number.characters.count == 0{
+                showError("Cannot call empty number")
+            }else{
+                //Configure alert controller
+                let alertController = UIAlertController(title: "Make call", message: "To "+number, preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+                    self.errorLabel.hidden = true
+                }
+                let callAction = UIAlertAction(title: "Call", style: .Default) { (action) in
+                    UIApplication.sharedApplication().openURL(url)
+                    self.errorLabel.hidden = true
+                }
+                alertController.addAction(cancelAction)
+                alertController.addAction(callAction)
+                
+                self.presentViewController(alertController, animated: true) {}
             }
-            let callAction = UIAlertAction(title: "Call", style: .Default) { (action) in
-                UIApplication.sharedApplication().openURL(url)
-                self.errorLabel.hidden = true
-            }
-            alertController.addAction(cancelAction)
-            alertController.addAction(callAction)
-            
-            self.presentViewController(alertController, animated: true) {}
         }else{
             //for some reason we could not place the call
-            UIView.transitionWithView(self.errorLabel, duration: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                self.errorLabel.hidden = false
-                }, completion: nil)
-            self.errorLabel.text = "Failed to make call"
+            showError("Failed to make call")
         }
+    }
+    func showError(message:String){
+        UIView.transitionWithView(self.errorLabel, duration: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.errorLabel.hidden = false
+            }, completion: nil)
+        self.errorLabel.text = message
     }
 }
 
