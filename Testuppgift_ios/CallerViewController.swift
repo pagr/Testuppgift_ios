@@ -15,10 +15,7 @@ class CallerViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhoneBookViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        dismissKeyboardOnTap()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,14 +23,11 @@ class CallerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override func viewDidAppear(animated: Bool) {
+        //If a number is set copy it into the textfield and clear the global number for next time
         if let number = selectedPhoneNumber{
             phoneNumberTextField.text = number
             selectedPhoneNumber = nil
         }
-    }
-    func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
     
     
@@ -41,8 +35,9 @@ class CallerViewController: UIViewController {
         if let number = self.phoneNumberTextField.text,
             let url = NSURL(string: "tel:"+number) where
             UIApplication.sharedApplication().canOpenURL(url){
-            let alertController = UIAlertController(title: "Make call", message: "To "+number, preferredStyle: .Alert)
             
+            //Configure alert controller
+            let alertController = UIAlertController(title: "Make call", message: "To "+number, preferredStyle: .Alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
                 self.errorLabel.hidden = true
             }
@@ -55,11 +50,11 @@ class CallerViewController: UIViewController {
             
             self.presentViewController(alertController, animated: true) {}
         }else{
-            
+            //for some reason we could not place the call
             UIView.transitionWithView(self.errorLabel, duration: 0.2, options: UIViewAnimationOptions.CurveEaseIn, animations: {
                 self.errorLabel.hidden = false
                 }, completion: nil)
-            self.errorLabel.text = "Can not call this number"
+            self.errorLabel.text = "Failed to make call"
         }
     }
 }

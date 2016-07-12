@@ -47,6 +47,15 @@ extension UIView {
         }
     }
 }
+extension UIViewController{
+    func dismissKeyboardOnTap(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhoneBookViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
+}
 
 extension NSURL {
     func getData(callback: Response<NSData> -> Void) {
@@ -72,7 +81,7 @@ extension NSURL {
                 if let image = UIImage(data: data) {
                     return Response<UIImage>.Success(image)
                 }
-                return Response<UIImage>.Error(NSError(domain: "getImage", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not decode image"]))
+                return Response<UIImage>.Error(NSError(domain: "getImage", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not load image"]))
             }))
         }
     }
